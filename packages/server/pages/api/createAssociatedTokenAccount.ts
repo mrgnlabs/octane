@@ -44,17 +44,17 @@ export default async function (request: NextApiRequest, response: NextApiRespons
             cache
         );
 
-        if (config.returnSignature !== undefined) {
-            if (!await isReturnedSignatureAllowed(
-                request,
-                config.returnSignature as ReturnSignatureConfigField
-            )) {
-                response.status(400).send({ status: 'error', message: 'anti-spam check failed' });
-                return;
-            }
-            response.status(200).send({ status: 'ok', signature });
-            return;
-        }
+        // if (config.returnSignature !== undefined) {
+        //     if (!await isReturnedSignatureAllowed(
+        //         request,
+        //         config.returnSignature as ReturnSignatureConfigField
+        //     )) {
+        //         response.status(400).send({ status: 'error', message: 'anti-spam check failed' });
+        //         return;
+        //     }
+        //     response.status(200).send({ status: 'ok', signature });
+        //     return;
+        // }
 
         transaction.addSignature(
             ENV_SECRET_KEYPAIR.publicKey,
