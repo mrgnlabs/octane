@@ -6,11 +6,11 @@ If you are considering integrating with Octane, this page will provide examples 
 
 In its simplest form, Octane allows to submit transactions in client-side code without paying transaction fees in SOL in exchange for an equivalent payment in liquid SPL tokens. For example, a client pays 0.001 USDC to Octane node and submits transaction with fee payer equal to Octane address.
 
-To do that, you need form a transaction in your client code (whether it's a mobile or web app) with token transfer to Octane as first instruction and any other instructions ("payload"). Then, you need to call Octane node's `/api/transfer` endpoint with serialized transaction. The endpoint will sign transaction on Octane's behalf and submit it to the network.
+To do that, you need to form a transaction in your client code (whether it's a mobile or web app) with token transfer to Octane as first instruction and any other instructions ("payload"). Then, you need to call Octane node's `/api/transfer` endpoint with serialized transaction. The endpoint will sign transaction on Octane's behalf and submit it to the network.
 
 Octane's configuration with fee payer public key and fee amount for your operations can be loaded by calling `/api` endpoint.
 
-Payload instructions shouldn't create any new accounts. If your use cases requires to create new accounts, go to the just-in-time swaps section.
+Payload instructions shouldn't create any new accounts. If your use cases require to create new accounts, go to the just-in-time swaps section.
 
 It's recommended to go through Octane flow only if user's wallet doesn't have any SOL to send transactions.
 
@@ -34,7 +34,7 @@ When choosing liquid tokens to accept as a node owner, you can refer to [solana-
 
 ### Using your own token
 
-If you have your own token, you can setup Octane node to accept this token for fee payments. You can airdrop tokens to users who you'd like to help transacting. In this scenario, you have to setup Octane node yourself, since other operators, probably, won't accept that token.
+If you have your own token, you can setup Octane node to accept this token for fee payments. You can airdrop tokens to users whom you'd like to help transacting. In this scenario, you have to setup Octane node yourself, since other operators, probably, won't accept that token.
 
 You have to monitor token emission and fee pricing, regularly top up fee keypair with more SOL. When you accept liquid tokes, running an Octane node breaks even or is slightly profitable. When using your own token, Octane node just spends SOL without much return except easier transactions for token owners.
 
@@ -44,7 +44,7 @@ Also, you have to set checks on token emission using ReCaptcha, auth or whitelis
 
 Octane generally doesn't support creating accounts in transaction instructions. However, there is a separate endpoint to create an associated token account for any owner and mint without spending SOL.
 
-When implementing SPL token transfers, if transfer sender doesn't have SOL and transfer recipient doesn't have associated token account, use `/api/createAssociatedTokenAccount` Octane endpoint prior to sending the actual transfer transaction using `/api/transfer`.
+When implementing SPL token transfers, if transfer sender doesn't have SOL and transfer recipient doesn't have an associated token account, use `/api/createAssociatedTokenAccount` Octane endpoint prior to sending the actual transfer transaction using `/api/transfer`.
 
 This endpoint accepts a transaction with two instructions:
 * First instruction should transfer a fee to Octane (this fee is higher than normal, since Octane pays for rent-exemption minimum)
@@ -113,7 +113,7 @@ You should pass payload transaction from client to this endpoint. The passed tra
 By establishing limits and regularly topping up the fee payer's wallet, your users will be able to run transactions while having empty wallets.
 
 _Who can use it?_
-* Dapps that want to onboard users with empty wallets and run transactions that do no require liquid funds (creating your own token or a DAO, SPL memo, etc.)
+* Dapps that want to onboard users with empty wallets and run transactions that do not require liquid funds (creating your own token or a DAO, SPL memo, etc.)
 
 _Examples:_
 * [Backend endpoints for fully sponsored transaction](https://github.com/sevazhidkov/octane-demo/blob/main/src/pages/api/auth-transactions/send.ts)

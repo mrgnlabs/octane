@@ -58,7 +58,7 @@ Example response:
 
 `POST /api/createAssociatedTokenAccount`
 
-The transaction should transfer a fee to Octane as first instruction and create new associated token account as second instruction.
+The transaction should transfer a fee to Octane as the first instruction and create a new associated token account as the second instruction.
 
 | Parameter   | Type   | Description                                                 |
 |-------------|--------|-------------------------------------------------------------|

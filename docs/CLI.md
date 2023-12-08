@@ -10,7 +10,7 @@ Generates JSON to put in `config.json` as token fees for a specific endpoint. It
 
 Config should be generated for each endpoint separately — in most cases, with different arguments.
 
-Endpoints like `transfer` and `buildWhirlpoolSwap` require less SOL, so margins could be higher. Endpoint `createAssociatedTokenAccount`, that charges fee payer for a rent exemption payment on a new token account, must include `--include-account-fees` and may use lower margins, since the original price would be much higher.
+Endpoints like `transfer` and `buildWhirlpoolSwap` require less SOL, so margins could be higher. Endpoint `createAssociatedTokenAccount`, which charges fee payer for a rent exemption payment on a new token account, must include `--include-account-fees` and may use lower margins, since the original price would be much higher.
 
 ```
 {
