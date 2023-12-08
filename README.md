@@ -8,7 +8,7 @@
 
 ## What is Octane?
 
-Octane is a gasless transaction relayer for Solana. Octane accepts transactions via an HTTP API, signs them if they satisfy certain conditions and broadcasts to the network.
+Octane is a gasless transaction relayer for Solana. Octane accepts transactions via an HTTP API, signs them if they satisfy certain conditions and broadcasts them to the network.
 
 It's designed for anyone to be able to run for free on Vercel as a collection of serverless Node.js API functions.
 
