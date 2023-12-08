@@ -23,7 +23,7 @@ You can call them from your backend endpoints when your use case fits in the Oct
 
 #### signWithTokenFee
 
-Sign transaction by fee payer if the first instruction of transaction is a transfer of token fee and the rest instructions do not interact with fee payer's wallet.
+Sign transaction by fee payer if the first instruction of transaction is a transfer of token fee and the rest of instructions do not interact with fee payer's wallet.
 
 It also implements additional checks: duplicated transactions, fee payer source and failing transactions detection using simulation.
 
@@ -58,19 +58,19 @@ await sendAndConfirmRawTransaction(connection, transaction.serialize(), { commit
 | lamportsPerSignature | number                                     | Maximum transaction fee payment amount in lamports                   |
 | allowedTokens        | core.TokenFee[] from '@solana/octane-core' | List of tokens that can be used for Octane fees with associated info |
 | cache                | Cache from 'cache-manager'                 | A cache to store duplicate transactions                              |
-| sameSourceTimeout    | number                                     | An interval for transactions with same token fee source, ms          |
+| sameSourceTimeout    | number                                     | An interval for transactions with the same token fee source, ms          |
 
 #### createAccountIfTokenFeePaid
 
 Signs transaction by fee payer if both statements are true:
 
-a) the first instruction is a transfer of token fee to given account
+a) the first instruction is a transfer of token fee to a given account
 
 b) the second instruction creates an associated token account with initialization fees paid by fee payer.
 
 This action allows end users to transfer some tokens to a new associated token account, while paying rent fees in SPL tokens instead of SOL.
 
-Token fee for this operation should be higher then usual. Node owners pay SOL for both transaction fees and rent exemption of the newly created account.
+Token fee for this operation should be higher than usual. Node owners pay SOL for both transaction fees and rent exemption of the newly created account.
 
 ```javascript
 const { signature } = await createAccountIfTokenFeePaid(
@@ -183,7 +183,7 @@ await sendAndConfirmRawTransaction(
 
 Octane's core provides helper functions for implementing your own gasless signing logic.
 
-You can view example of such usage in [octane-demo app's backend](https://github.com/sevazhidkov/octane-demo/blob/main/src/pages/api/auth-transactions/send.ts).
+You can view an example of such usage in [octane-demo app's backend](https://github.com/sevazhidkov/octane-demo/blob/main/src/pages/api/auth-transactions/send.ts).
 
 #### validateTransaction
 
